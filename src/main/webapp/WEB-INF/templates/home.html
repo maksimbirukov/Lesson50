@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head th:replace="~{header :: common_header(~{::title}, ~{::link}, ~{::script})}">
+    <title>Home page</title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <script  src="node_modules/jquery/dist/jquery.min.js" th:src="@{node_modules/jquery/dist/jquery.min.js}"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" th:src="@{node_modules/bootstrap/dist/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body>
+
+
+<div th:if="${user.isAdmin()} == ${needToBeAdmin}">
+    <p>user is ADMIN</p>
+    <p th:text="${user['name']}"></p>
+    <p th:text="Welcome + ' ' + ${user.name}"></p>
+    <p th:text="|Welcome, ${user.name} with age = ${user.age}|"></p>
+</div>
+
+<div th:if="${user.age} ge 30">
+    <p th:text="${user.age}"></p>
+    <p th:text="${user.type} ?: _">no user authentication</p>
+</div>
+
+<p th:text="${__#{home.invokeMethod('user.name')}__}"></p>
+
+<div th:class="${user.type}? 'type'" th:attr="id='lesson-name',hidden='true'">
+    <h1>LESSON 50</h1>
+</div>
+
+<div th:class="${user.type}? 'type'" th:id="lesson-name-1" th:hidden="hidden">
+    <h1>LESSON 50</h1>
+</div>
+
+<div class="type" th:attrappend="class=' row'">
+    <h1>LESSON 50</h1>
+</div>
+
+<div class="type" th:classappend="'row'">
+    <h1>LESSON 50</h1>
+</div>
+
+<div th:insert="~{footer :: copy}"></div>
+</body>
+</html>

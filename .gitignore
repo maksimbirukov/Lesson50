@@ -1,0 +1,10 @@
+target/
+
+### IntelliJ IDEA ###
+.idea/
+/src/main/webapp/node_modules/
+/src/main/webapp/package-lock.json
+
+### Mac OS ###
+.DS_Store
+
